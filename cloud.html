@@ -1,0 +1,946 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CloudGate: 100GB Free Cloud Storage for Android, iPhone and Web</title>
+<meta name="description" content="CloudGate gives you 100GB of free cloud storage. Back up photos, videos and documents, restore in one tap, and reach everything from Android, iPhone and your browser.">
+<meta name="keywords" content="cloud storage, free cloud storage, 100GB free cloud storage, cloud storage app, cloud backup app, personal cloud storage, mobile cloud storage, secure cloud storage">
+<link rel="canonical" href="https://cloudgate-app.com/">
+
+<meta property="og:type" content="website">
+<meta property="og:title" content="CloudGate: 100GB Free Cloud Storage">
+<meta property="og:description" content="Back up photos, videos and files free with CloudGate. 100GB free storage on Android, iPhone and the web.">
+<meta property="og:url" content="https://cloudgate-app.com/">
+<meta property="og:image" content="/assets/logo-source.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="CloudGate: 100GB Free Cloud Storage">
+<meta name="twitter:description" content="Back up photos, videos and files free with CloudGate. 100GB free storage on Android, iPhone and the web.">
+
+<link rel="icon" href="assets/logo-source.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,600;12..96,700;12..96,800&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "CloudGate",
+  "operatingSystem": "Android, iOS, Web",
+  "applicationCategory": "ProductivityApplication",
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+  "aggregateRating": { "@type": "AggregateRating", "ratingValue": "4.4", "ratingCount": "1880" },
+  "publisher": { "@type": "Organization", "name": "CloudGate Technologies" }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {"@type": "Question", "name": "Is CloudGate really free", "acceptedAnswer": {"@type": "Answer", "text": "Yes. Every account starts with 100GB of free cloud storage, no credit card required. You can upgrade later if you need more space."}},
+    {"@type": "Question", "name": "Which devices does CloudGate work on", "acceptedAnswer": {"@type": "Answer", "text": "CloudGate is available on Android, iPhone and iPad, and through a web browser, so your storage follows you between devices."}},
+    {"@type": "Question", "name": "Is my data private in CloudGate", "acceptedAnswer": {"@type": "Answer", "text": "Your data is encrypted in transit, and sensitive files can be locked behind a passcode protected vault inside the app."}}
+  ]
+}
+</script>
+
+<style>
+:root{
+  --sky:#4FC3F7;
+  --blue:#0B6FE8;
+  --deep:#08245C;
+  --ink:#0A1730;
+  --paper:#F5FAFF;
+  --white:#FFFFFF;
+  --gate-red:#E63946;
+  --gold:#F4B740;
+  --line: rgba(10,23,48,0.09);
+  --display: 'Bricolage Grotesque', sans-serif;
+  --body: 'Inter', sans-serif;
+  --mono: 'IBM Plex Mono', monospace;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{
+  font-family:var(--body);
+  color:var(--ink);
+  background:var(--paper);
+  overflow-x:hidden;
+  -webkit-font-smoothing:antialiased;
+  position:relative;
+}
+body::before{
+  content:'';position:fixed;inset:0;pointer-events:none;z-index:1;opacity:0.035;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+a{color:inherit;text-decoration:none;}
+img{max-width:100%;display:block;}
+.wrap{max-width:1180px;margin:0 auto;padding:0 28px;position:relative;z-index:2;}
+section{position:relative;z-index:2;}
+
+@media (prefers-reduced-motion: reduce){
+  *{animation-duration:0.001ms !important; animation-iteration-count:1 !important; transition-duration:0.001ms !important; scroll-behavior:auto !important;}
+}
+
+/* HEADER */
+header{
+  position:fixed; top:0; left:0; right:0; z-index:100;
+  padding:20px 0;
+  transition:background .4s ease, box-shadow .4s ease, padding .4s ease;
+}
+header.scrolled{
+  background:rgba(245,250,255,0.86);
+  backdrop-filter:blur(16px);
+  -webkit-backdrop-filter:blur(16px);
+  box-shadow:0 1px 0 var(--line);
+  padding:13px 0;
+}
+.nav{display:flex;align-items:center;justify-content:space-between;gap:24px;}
+.brand{display:flex;align-items:center;gap:11px;font-family:var(--display);font-weight:700;font-size:1.3rem;letter-spacing:-0.01em;}
+.brand img{width:36px;height:36px;border-radius:10px;}
+.nav-links{display:flex;align-items:center;gap:38px;}
+.nav-links a{font-weight:600;font-size:0.95rem;color:var(--ink);opacity:0.75;transition:opacity .2s;position:relative;}
+.nav-links a:hover{opacity:1;}
+.nav-links a:focus-visible{outline:2px solid var(--blue);outline-offset:4px;border-radius:4px;}
+.cta-btn{
+  font-family:var(--body);font-weight:700;font-size:0.92rem;
+  background:linear-gradient(135deg,var(--sky),var(--blue));
+  color:#fff; padding:12px 24px; border-radius:100px; border:none; cursor:pointer;
+  box-shadow:0 8px 22px rgba(11,111,232,0.3);
+  transition:transform .25s cubic-bezier(.2,.9,.3,1.3), box-shadow .25s ease;
+  display:inline-block;
+}
+.cta-btn:hover{transform:translateY(-2px) scale(1.02);box-shadow:0 12px 28px rgba(11,111,232,0.4);}
+.cta-btn:focus-visible{outline:3px solid var(--deep);outline-offset:3px;}
+
+/* HERO */
+.hero{
+  position:relative;
+  padding:186px 0 120px;
+  background:
+    radial-gradient(ellipse 1000px 560px at 50% -12%, rgba(79,195,247,0.4), transparent 62%),
+    linear-gradient(180deg, var(--paper) 0%, #EAF4FF 100%);
+  overflow:hidden;
+}
+.orb{position:absolute;border-radius:50%;filter:blur(60px);opacity:0.35;z-index:0;animation:orbit 16s ease-in-out infinite;}
+.orb1{width:340px;height:340px;background:var(--sky);top:-80px;left:-100px;}
+.orb2{width:260px;height:260px;background:var(--gold);bottom:20px;right:-60px;animation-delay:-6s;}
+@keyframes orbit{0%,100%{transform:translate(0,0);}50%{transform:translate(30px,-24px);}}
+
+.hero-inner{display:grid;grid-template-columns:1.05fr 0.95fr;gap:52px;align-items:center;}
+.eyebrow{
+  display:inline-flex;align-items:center;gap:8px;
+  font-family:var(--mono);font-size:0.78rem;font-weight:600;letter-spacing:0.02em;
+  color:var(--blue); background:rgba(11,111,232,0.08);
+  padding:8px 16px;border-radius:100px;margin-bottom:24px;
+  border:1px solid rgba(11,111,232,0.18);
+  animation:fadeUpSmall .7s ease both;
+}
+.eyebrow .dot{width:6px;height:6px;border-radius:50%;background:var(--gate-red);animation:pulse 2s infinite;}
+@keyframes pulse{0%,100%{opacity:1;}50%{opacity:0.35;}}
+h1{
+  font-family:var(--display); font-weight:800; letter-spacing:-0.03em;
+  font-size:clamp(2.5rem, 4.8vw, 3.9rem); line-height:1.05; color:var(--deep);
+  margin-bottom:24px;
+  animation:fadeUpSmall .8s ease .1s both;
+}
+h1 .accent{
+  background:linear-gradient(135deg,var(--blue),var(--sky));
+  -webkit-background-clip:text; background-clip:text; color:transparent;
+}
+@keyframes fadeUpSmall{0%{opacity:0;transform:translateY(18px);}100%{opacity:1;transform:translateY(0);}}
+.hero p.sub{font-size:1.15rem;line-height:1.65;color:rgba(10,23,48,0.72);max-width:500px;margin-bottom:36px;animation:fadeUpSmall .8s ease .2s both;}
+.store-row{display:flex;flex-wrap:wrap;gap:14px;margin-bottom:28px;animation:fadeUpSmall .8s ease .3s both;}
+.store-btn{
+  display:flex;align-items:center;gap:10px;
+  background:var(--deep); color:#fff; padding:13px 22px;border-radius:14px;
+  font-weight:600; font-size:0.95rem; transition:transform .25s cubic-bezier(.2,.9,.3,1.3), background .2s, box-shadow .25s;
+  border:1px solid transparent;
+}
+.store-btn:hover{transform:translateY(-3px);background:#0b2f78;box-shadow:0 14px 26px rgba(8,36,92,0.28);}
+.store-btn:focus-visible{outline:3px solid var(--blue);outline-offset:2px;}
+.store-btn.web{background:transparent;color:var(--deep);border:1.5px solid var(--line);}
+.store-btn.web:hover{background:#fff;border-color:var(--blue);}
+.store-btn svg{width:20px;height:20px;flex-shrink:0;}
+.hero-note{font-size:0.85rem;color:rgba(10,23,48,0.55);animation:fadeUpSmall .8s ease .4s both;}
+
+.gate-stage{position:relative;aspect-ratio:1/1;max-width:480px;margin:0 auto;}
+.pillar{
+  position:absolute;top:6%;bottom:6%;width:15%;
+  background:linear-gradient(180deg,var(--sky),var(--blue));
+  border-radius:20px;
+  box-shadow:0 24px 48px rgba(11,111,232,0.28);
+  animation:openGate 2.6s cubic-bezier(.19,1,.22,1) both;
+}
+.pillar.left{left:8%;transform-origin:left center;}
+.pillar.right{right:8%;transform-origin:right center;}
+@keyframes openGate{
+  0%{transform:rotate(0deg) scaleY(0.35);opacity:0;}
+  55%{opacity:1;}
+  100%{transform:rotate(var(--rot,0deg)) scaleY(1);opacity:1;}
+}
+.pillar.left{--rot:-4.5deg;}
+.pillar.right{--rot:4.5deg;}
+.gate-lintel{
+  position:absolute; top:4%; left:6%; right:6%; height:9%;
+  background:linear-gradient(90deg,var(--deep),var(--blue));
+  border-radius:16px;
+  box-shadow:0 16px 34px rgba(8,36,92,0.32);
+  animation:dropLintel 1.1s cubic-bezier(.19,1,.22,1) both;
+  animation-delay:.25s;
+}
+@keyframes dropLintel{0%{transform:translateY(-46px);opacity:0;}100%{transform:translateY(0);opacity:1;}}
+.gate-glow{
+  position:absolute;left:50%;top:50%;width:70%;aspect-ratio:1/1;transform:translate(-50%,-50%);
+  background:radial-gradient(circle, rgba(79,195,247,0.5), transparent 68%);
+  filter:blur(20px);animation:glowPulse 4s ease-in-out infinite;
+}
+@keyframes glowPulse{0%,100%{opacity:0.5;}50%{opacity:0.9;}}
+.cloud-core{
+  position:absolute; left:50%; top:52%; transform:translate(-50%,-50%);
+  width:54%; animation:floatCloud 5.5s ease-in-out infinite, fadeUp 1.1s ease both;
+  animation-delay:0s, .65s; filter:drop-shadow(0 20px 30px rgba(8,36,92,0.25));
+}
+@keyframes floatCloud{0%,100%{transform:translate(-50%,-50%) translateY(0) rotate(0deg);}50%{transform:translate(-50%,-50%) translateY(-12px) rotate(1deg);}}
+@keyframes fadeUp{0%{opacity:0;transform:translate(-50%,-30%);}100%{opacity:1;transform:translate(-50%,-50%);}}
+.file-chip{
+  position:absolute; background:#fff; border-radius:11px; padding:9px 13px;
+  font-family:var(--mono); font-size:0.72rem; font-weight:600; color:var(--deep);
+  box-shadow:0 12px 26px rgba(8,36,92,0.18); display:flex; align-items:center; gap:6px;
+  opacity:0; animation:driftIn 1.7s ease forwards;
+}
+.file-chip .sq{width:8px;height:8px;border-radius:3px;}
+.chip1{top:12%;left:-2%;animation-delay:1.3s;}
+.chip1 .sq{background:var(--gate-red);}
+.chip2{bottom:15%;right:0%;animation-delay:1.6s;}
+.chip2 .sq{background:var(--sky);}
+.chip3{bottom:2%;left:20%;animation-delay:1.9s;}
+.chip3 .sq{background:var(--blue);}
+.chip4{top:36%;right:-6%;animation-delay:2.2s;}
+.chip4 .sq{background:var(--gold);}
+@keyframes driftIn{
+  0%{opacity:0;transform:translateY(26px) scale(0.9);}
+  100%{opacity:1;transform:translateY(0) scale(1);}
+}
+
+/* MARQUEE */
+.marquee-wrap{border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:#fff;padding:22px 0;overflow:hidden;}
+.marquee{display:flex;gap:64px;width:max-content;animation:scrollLeft 26s linear infinite;}
+.marquee span{font-family:var(--mono);font-size:0.82rem;font-weight:600;color:rgba(10,23,48,0.4);letter-spacing:0.04em;white-space:nowrap;}
+@keyframes scrollLeft{0%{transform:translateX(0);}100%{transform:translateX(-50%);}}
+
+/* STATS */
+.stats{background:#fff;}
+.stats-row{display:grid;grid-template-columns:repeat(4,1fr);padding:44px 0;gap:24px;}
+.stat{text-align:center;}
+.stat b{
+  display:block;font-family:var(--display);font-size:2.2rem;font-weight:800;color:var(--deep);
+  letter-spacing:-0.02em;
+}
+.stat span{font-size:0.86rem;color:rgba(10,23,48,0.6);font-weight:500;}
+
+/* SECTION HEADERS */
+.section{padding:112px 0;}
+.section.tint{background:#fff;}
+.sec-head{max-width:660px;margin:0 auto 60px;text-align:center;}
+.sec-head .kicker{
+  font-family:var(--mono);font-size:0.78rem;font-weight:600;color:var(--gate-red);
+  text-transform:uppercase;letter-spacing:0.09em;margin-bottom:14px;display:block;
+}
+.sec-head h2{
+  font-family:var(--display);font-weight:700;font-size:clamp(1.9rem,3.2vw,2.7rem);
+  color:var(--deep);letter-spacing:-0.02em;margin-bottom:16px;
+}
+.sec-head p{color:rgba(10,23,48,0.65);font-size:1.08rem;line-height:1.65;}
+
+/* FEATURES GRID */
+.feat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;}
+.feat-card{
+  background:#fff;border:1px solid var(--line);border-radius:22px;padding:32px 28px;
+  transition:transform .35s cubic-bezier(.2,.9,.3,1.2), box-shadow .35s ease, border-color .35s ease;
+  opacity:0;transform:translateY(28px);
+}
+.feat-card.in{opacity:1;transform:translateY(0);}
+.feat-card:hover{transform:translateY(-8px);box-shadow:0 24px 46px rgba(8,36,92,0.12);border-color:transparent;}
+.feat-icon{
+  width:48px;height:48px;border-radius:14px;margin-bottom:20px;
+  background:linear-gradient(135deg,var(--sky),var(--blue));
+  display:flex;align-items:center;justify-content:center;
+  transition:transform .3s ease;
+}
+.feat-card:hover .feat-icon{transform:rotate(-6deg) scale(1.08);}
+.feat-icon svg{width:24px;height:24px;stroke:#fff;}
+.feat-card h3{font-family:var(--display);font-size:1.15rem;font-weight:700;margin-bottom:11px;color:var(--deep);}
+.feat-card p{font-size:0.94rem;line-height:1.65;color:rgba(10,23,48,0.65);}
+
+/* SPOTLIGHT ROWS */
+.spotlight-row{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center;margin-bottom:130px;}
+.spotlight-row:last-child{margin-bottom:0;}
+.spotlight-row.reverse{direction:rtl;}
+.spotlight-row.reverse > *{direction:ltr;}
+.spotlight-tag{
+  font-family:var(--mono);font-size:0.78rem;font-weight:600;color:var(--blue);
+  text-transform:uppercase;letter-spacing:0.08em;margin-bottom:16px;display:inline-block;
+}
+.spotlight-copy h3{font-family:var(--display);font-weight:700;font-size:clamp(1.5rem,2.4vw,2rem);color:var(--deep);letter-spacing:-0.02em;margin-bottom:18px;line-height:1.2;}
+.spotlight-copy p{font-size:1.02rem;line-height:1.75;color:rgba(10,23,48,0.68);margin-bottom:22px;}
+.spotlight-list{list-style:none;}
+.spotlight-list li{display:flex;align-items:flex-start;gap:10px;font-size:0.95rem;color:rgba(10,23,48,0.72);margin-bottom:12px;line-height:1.5;}
+.spotlight-list svg{width:19px;height:19px;flex-shrink:0;margin-top:2px;stroke:var(--blue);}
+.spotlight-visual{
+  position:relative;aspect-ratio:4/3.2;border-radius:26px;overflow:hidden;
+  background:linear-gradient(150deg,#EAF4FF,#D9ECFF);
+  border:1px solid var(--line);
+  opacity:0;transform:translateY(30px);transition:opacity .8s ease, transform .8s ease;
+}
+.spotlight-visual.in{opacity:1;transform:translateY(0);}
+.mock-window{
+  position:absolute;inset:22px;background:#fff;border-radius:18px;box-shadow:0 30px 60px rgba(8,36,92,0.14);
+  padding:20px;display:flex;flex-direction:column;gap:12px;
+}
+.mock-bar{display:flex;gap:6px;margin-bottom:6px;}
+.mock-bar span{width:9px;height:9px;border-radius:50%;background:var(--line);}
+.mock-row{display:flex;align-items:center;gap:12px;padding:10px 12px;border-radius:12px;background:var(--paper);}
+.mock-row .ic{width:32px;height:32px;border-radius:9px;flex-shrink:0;background:linear-gradient(135deg,var(--sky),var(--blue));}
+.mock-row .bars{flex:1;display:flex;flex-direction:column;gap:6px;}
+.mock-row .bars i{display:block;height:7px;border-radius:4px;background:var(--line);}
+.mock-row .bars i:first-child{width:70%;}
+.mock-row .bars i:last-child{width:40%;background:rgba(10,23,48,0.06);}
+.mock-progress{margin-top:auto;}
+.mock-progress .track{height:8px;border-radius:100px;background:var(--paper);overflow:hidden;}
+.mock-progress .fill{height:100%;border-radius:100px;background:linear-gradient(90deg,var(--sky),var(--blue));width:0%;animation:fillBar 2s ease .5s forwards;}
+@keyframes fillBar{to{width:64%;}}
+.mock-progress span{display:block;margin-top:8px;font-family:var(--mono);font-size:0.72rem;color:rgba(10,23,48,0.5);}
+.lock-badge{
+  position:absolute;top:14px;right:14px;background:var(--deep);color:#fff;border-radius:100px;
+  padding:7px 14px;font-family:var(--mono);font-size:0.7rem;font-weight:600;display:flex;align-items:center;gap:6px;
+  animation:floatBadge 3.4s ease-in-out infinite;
+}
+@keyframes floatBadge{0%,100%{transform:translateY(0);}50%{transform:translateY(-6px);}}
+.device-strip{position:absolute;bottom:14px;left:14px;right:14px;display:flex;gap:10px;}
+.device-pill{
+  flex:1;background:#fff;border-radius:12px;padding:10px;text-align:center;
+  font-family:var(--mono);font-size:0.68rem;font-weight:600;color:var(--deep);
+  box-shadow:0 10px 22px rgba(8,36,92,0.1);
+}
+
+/* STEPS */
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:0;position:relative;}
+.steps::before{
+  content:'';position:absolute;top:25px;left:12%;right:12%;height:2px;
+  background:repeating-linear-gradient(90deg,var(--line) 0 8px,transparent 8px 16px);
+}
+.step{text-align:center;padding:0 20px;position:relative;opacity:0;transform:translateY(22px);}
+.step.in{opacity:1;transform:translateY(0);}
+.step-num{
+  width:50px;height:50px;border-radius:50%;background:var(--deep);color:#fff;
+  display:flex;align-items:center;justify-content:center;margin:0 auto 22px;
+  font-family:var(--mono);font-weight:600;font-size:1rem;position:relative;z-index:1;
+  box-shadow:0 10px 22px rgba(8,36,92,0.24);
+}
+.step h3{font-family:var(--display);font-weight:700;font-size:1.1rem;color:var(--deep);margin-bottom:9px;}
+.step p{font-size:0.92rem;color:rgba(10,23,48,0.62);line-height:1.6;}
+
+/* PLATFORMS */
+.plat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;}
+.plat-card{
+  border-radius:24px;padding:36px 30px;position:relative;overflow:hidden;
+  background:linear-gradient(160deg,#0B2F78,var(--deep));color:#fff;
+  opacity:0;transform:translateY(28px);transition:transform .4s ease;
+}
+.plat-card.in{opacity:1;transform:translateY(0);}
+.plat-card:hover{transform:translateY(-6px);}
+.plat-card:nth-child(2){background:linear-gradient(160deg,var(--blue),#083a99);}
+.plat-card:nth-child(3){background:linear-gradient(160deg,var(--sky),var(--blue));}
+.plat-card h3{font-family:var(--display);font-weight:700;font-size:1.35rem;margin-bottom:9px;}
+.plat-card p{font-size:0.92rem;opacity:0.85;margin-bottom:24px;line-height:1.6;}
+.plat-card a{
+  display:inline-flex;align-items:center;gap:8px;background:#fff;color:var(--deep);
+  padding:11px 20px;border-radius:100px;font-weight:700;font-size:0.88rem;
+  transition:transform .25s;
+}
+.plat-card a:hover{transform:translateY(-2px);}
+.plat-icon{width:40px;height:40px;margin-bottom:20px;opacity:0.92;}
+
+/* COMPARE */
+.compare-table{
+  background:#fff;border:1px solid var(--line);border-radius:24px;overflow:hidden;
+  box-shadow:0 30px 60px rgba(8,36,92,0.08);
+}
+.compare-row{display:grid;grid-template-columns:1.6fr 1fr 1fr;padding:20px 30px;align-items:center;border-bottom:1px solid var(--line);}
+.compare-row:last-child{border-bottom:none;}
+.compare-row.head{background:var(--deep);color:#fff;font-family:var(--display);font-weight:700;}
+.compare-row span.label{font-weight:600;font-size:0.95rem;}
+.compare-row .center{text-align:center;}
+.check{width:22px;height:22px;color:var(--blue);}
+.compare-row.head .check{color:#fff;}
+.dash-cell{color:rgba(10,23,48,0.28);font-size:1.1rem;}
+
+/* CLOUD TIPS BLOG PREVIEW */
+.tips-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;}
+.tip-card{
+  background:#fff;border:1px solid var(--line);border-radius:22px;overflow:hidden;
+  transition:transform .35s cubic-bezier(.2,.9,.3,1.2), box-shadow .35s ease;
+  opacity:0;transform:translateY(28px);
+}
+.tip-card.in{opacity:1;transform:translateY(0);}
+.tip-card:hover{transform:translateY(-8px);box-shadow:0 24px 46px rgba(8,36,92,0.12);}
+.tip-thumb{
+  height:170px;position:relative;overflow:hidden;
+  background:linear-gradient(150deg,var(--sky),var(--blue));
+}
+.tip-thumb::after{
+  content:'';position:absolute;inset:0;
+  background:radial-gradient(circle at 30% 20%, rgba(255,255,255,0.35), transparent 55%);
+}
+.tip-thumb svg{position:absolute;bottom:-14px;right:-10px;width:110px;height:110px;opacity:0.22;stroke:#fff;}
+.tip-body{padding:24px 26px 28px;}
+.tip-cat{font-family:var(--mono);font-size:0.72rem;font-weight:600;color:var(--gate-red);text-transform:uppercase;letter-spacing:0.06em;margin-bottom:12px;display:block;}
+.tip-body h3{font-family:var(--display);font-weight:700;font-size:1.08rem;color:var(--deep);margin-bottom:10px;line-height:1.3;}
+.tip-body p{font-size:0.9rem;color:rgba(10,23,48,0.62);line-height:1.6;margin-bottom:16px;}
+.tip-meta{display:flex;justify-content:space-between;align-items:center;font-family:var(--mono);font-size:0.74rem;color:rgba(10,23,48,0.45);}
+.tip-read{font-weight:700;color:var(--blue);}
+.tips-footer{text-align:center;margin-top:52px;}
+.outline-btn{
+  display:inline-flex;align-items:center;gap:8px;border:1.5px solid var(--line);padding:13px 26px;
+  border-radius:100px;font-weight:700;font-size:0.94rem;color:var(--deep);transition:border-color .25s, transform .25s;
+}
+.outline-btn:hover{border-color:var(--blue);transform:translateY(-2px);}
+
+/* TESTIMONIALS */
+.rev-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;}
+.rev-card{
+  background:#fff;border:1px solid var(--line);border-radius:22px;padding:30px;
+  opacity:0;transform:translateY(28px);
+}
+.rev-card.in{opacity:1;transform:translateY(0);}
+.rev-stars{color:var(--gold);font-size:0.98rem;margin-bottom:16px;letter-spacing:2px;}
+.rev-card p{font-size:0.94rem;line-height:1.7;color:rgba(10,23,48,0.75);margin-bottom:18px;}
+.rev-name{font-family:var(--display);font-weight:600;font-size:0.9rem;color:var(--deep);}
+.rev-source{font-size:0.8rem;color:rgba(10,23,48,0.45);}
+
+/* FAQ */
+.faq-list{max-width:780px;margin:0 auto;}
+.faq-item{border-bottom:1px solid var(--line);}
+.faq-q{
+  width:100%;text-align:left;background:none;border:none;cursor:pointer;
+  padding:26px 4px;display:flex;justify-content:space-between;align-items:center;gap:20px;
+  font-family:var(--display);font-weight:600;font-size:1.05rem;color:var(--deep);
+}
+.faq-q .plus{width:22px;height:22px;flex-shrink:0;position:relative;}
+.faq-q .plus::before, .faq-q .plus::after{content:'';position:absolute;background:var(--blue);border-radius:2px;transition:transform .3s ease;}
+.faq-q .plus::before{width:100%;height:2px;top:50%;left:0;transform:translateY(-50%);}
+.faq-q .plus::after{width:2px;height:100%;left:50%;top:0;transform:translateX(-50%);}
+.faq-item.open .plus::after{transform:translateX(-50%) rotate(90deg) scale(0);}
+.faq-a{max-height:0;overflow:hidden;transition:max-height .4s ease;}
+.faq-a p{padding:0 4px 26px;font-size:0.96rem;line-height:1.7;color:rgba(10,23,48,0.65);max-width:640px;}
+
+/* FINAL CTA */
+.final-cta{
+  background:linear-gradient(135deg,var(--deep),#0B2F78 55%,var(--blue));
+  color:#fff;border-radius:34px;margin:0 28px;padding:80px 40px;text-align:center;
+  position:relative;overflow:hidden;
+}
+.final-cta::before{
+  content:'';position:absolute;inset:0;
+  background:radial-gradient(circle at 20% 20%, rgba(79,195,247,0.28), transparent 55%);
+}
+.final-cta::after{
+  content:'';position:absolute;inset:0;
+  background:radial-gradient(circle at 80% 90%, rgba(244,183,64,0.18), transparent 50%);
+}
+.final-cta h2{
+  font-family:var(--display);font-weight:800;font-size:clamp(1.9rem,3.6vw,2.8rem);
+  letter-spacing:-0.02em;margin-bottom:18px;position:relative;
+}
+.final-cta p{opacity:0.86;font-size:1.08rem;margin-bottom:36px;position:relative;}
+.final-cta .store-row{justify-content:center;position:relative;}
+.final-cta .store-btn{background:rgba(255,255,255,0.12);border:1px solid rgba(255,255,255,0.25);}
+.final-cta .store-btn:hover{background:rgba(255,255,255,0.2);}
+.final-cta .store-btn.web{border:1.5px solid rgba(255,255,255,0.4);color:#fff;}
+
+/* FOOTER */
+footer{padding:76px 0 44px;}
+.foot-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:40px;margin-bottom:54px;}
+.foot-brand .brand{margin-bottom:16px;}
+.foot-brand p{font-size:0.9rem;color:rgba(10,23,48,0.6);line-height:1.65;max-width:280px;}
+.foot-col h4{font-family:var(--display);font-size:0.85rem;font-weight:700;color:var(--deep);margin-bottom:18px;text-transform:uppercase;letter-spacing:0.05em;}
+.foot-col a{display:block;font-size:0.9rem;color:rgba(10,23,48,0.65);margin-bottom:12px;transition:color .2s;}
+.foot-col a:hover{color:var(--blue);}
+.foot-bottom{
+  border-top:1px solid var(--line);padding-top:28px;
+  display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;
+  font-size:0.82rem;color:rgba(10,23,48,0.5);
+}
+
+@media (max-width:900px){
+  .hero-inner{grid-template-columns:1fr;}
+  .gate-stage{order:-1;max-width:320px;}
+  .nav-links{display:none;}
+  .feat-grid,.steps,.plat-grid,.rev-grid,.tips-grid{grid-template-columns:1fr;}
+  .steps::before{display:none;}
+  .stats-row{grid-template-columns:repeat(2,1fr);}
+  .spotlight-row, .spotlight-row.reverse{grid-template-columns:1fr;direction:ltr;}
+  .spotlight-row .spotlight-visual{order:-1;}
+  .compare-row{grid-template-columns:1.4fr 1fr 1fr;padding:16px 18px;}
+  .foot-grid{grid-template-columns:1fr 1fr;gap:32px;}
+  .final-cta{margin:0 16px;padding:56px 26px;}
+}
+</style>
+</head>
+<body>
+
+<header id="header">
+  <div class="wrap nav">
+    <a href="#top" class="brand"><img src="assets/logo-source.png" alt="CloudGate logo"> CloudGate</a>
+    <nav class="nav-links">
+      <a href="features.html">Features</a>
+      <a href="blog.html">Cloud Tips</a>
+    </nav>
+    <a class="cta-btn" href="https://play.google.com/store/apps/details?id=com.cloudgate.cloudstorage&hl=en_AU">Get 100GB Free</a>
+  </div>
+</header>
+
+<main id="top">
+  <section class="hero">
+    <div class="orb orb1"></div>
+    <div class="orb orb2"></div>
+    <div class="wrap hero-inner">
+      <div>
+        <span class="eyebrow"><span class="dot"></span>100GB FREE, NO CREDIT CARD</span>
+        <h1>One gate.<br><span class="accent">100GB free</span> for everything you store.</h1>
+        <p class="sub">CloudGate backs up your photos, videos and documents automatically, then hands you a single door back to them from any device you own, an Android phone, an iPhone, or your browser.</p>
+        <div class="store-row">
+          <a class="store-btn" href="https://play.google.com/store/apps/details?id=com.cloudgate.cloudstorage&hl=en_AU" aria-label="Get CloudGate on Google Play">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M3.6 2.6c-.3.3-.5.8-.5 1.4v16c0 .6.2 1.1.5 1.4l.1.1L13 12.6v-.2L3.7 2.5l-.1.1z"/><path d="M16.3 15.9l-3.3-3.3v-.2l3.3-3.3 3.8 2.2c1.1.6 1.1 1.6 0 2.2l-3.8 2.4z" opacity=".7"/><path d="M16.3 15.9L13 12.5 3.7 21.9c.4.4 1 .4 1.7.1l10.9-6.1z"/><path d="M16.3 9.1L5.4 3c-.7-.4-1.3-.3-1.7.1L13 12.5l3.3-3.4z" opacity=".85"/></svg>
+            Google Play
+          </a>
+          <a class="store-btn" href="https://apps.apple.com/us/app/cloudgate-cloud-storage-app/id6504859413" aria-label="Get CloudGate on the App Store">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.05 12.5c0-2.9 2.37-4.3 2.48-4.37-1.35-1.98-3.46-2.25-4.2-2.28-1.79-.18-3.5 1.05-4.41 1.05-.91 0-2.31-1.03-3.8-1-1.95.03-3.75 1.13-4.75 2.87-2.03 3.51-.52 8.72 1.46 11.58.97 1.4 2.12 2.98 3.63 2.92 1.46-.06 2.01-.94 3.78-.94 1.76 0 2.26.94 3.8.91 1.57-.03 2.56-1.42 3.52-2.83 1.11-1.63 1.57-3.2 1.6-3.28-.03-.02-3.07-1.18-3.11-4.63z"/><path d="M14.85 4.19c.8-.97 1.34-2.31 1.19-3.66-1.15.05-2.55.77-3.38 1.73-.74.85-1.39 2.22-1.22 3.53 1.28.1 2.6-.65 3.41-1.6z"/></svg>
+            App Store
+          </a>
+          <a class="store-btn web" href="https://my.cloudgate-app.com" aria-label="Open CloudGate in your browser">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18"/></svg>
+            Open Web App
+          </a>
+        </div>
+        <p class="hero-note">Every account starts with 100GB. Upgrade any time if you need more room.</p>
+      </div>
+
+      <div class="gate-stage" aria-hidden="true">
+        <div class="gate-glow"></div>
+        <div class="gate-lintel"></div>
+        <div class="pillar left"></div>
+        <div class="pillar right"></div>
+        <img class="cloud-core" src="assets/logo-source.png" alt="">
+        <div class="file-chip chip1"><span class="sq"></span>IMG_0231.heic</div>
+        <div class="file-chip chip2"><span class="sq"></span>Tax_2026.pdf</div>
+        <div class="file-chip chip3"><span class="sq"></span>Video.mp4</div>
+        <div class="file-chip chip4"><span class="sq"></span>Contacts.vcf</div>
+      </div>
+    </div>
+  </section>
+
+  <div class="marquee-wrap" aria-hidden="true">
+    <div class="marquee">
+      <span>100GB FREE STORAGE</span><span>ANDROID</span><span>IPHONE</span><span>WEB BROWSER</span><span>PHOTO BACKUP</span><span>VAULT LOCK</span><span>ONE TAP RESTORE</span><span>DOCUMENT SCANNING</span>
+      <span>100GB FREE STORAGE</span><span>ANDROID</span><span>IPHONE</span><span>WEB BROWSER</span><span>PHOTO BACKUP</span><span>VAULT LOCK</span><span>ONE TAP RESTORE</span><span>DOCUMENT SCANNING</span>
+    </div>
+  </div>
+
+  <div class="stats">
+    <div class="wrap stats-row">
+      <div class="stat"><b>100GB</b><span>Free storage on every account</span></div>
+      <div class="stat"><b>4.4</b><span>Average app store rating</span></div>
+      <div class="stat"><b>100K+</b><span>People already backing up</span></div>
+      <div class="stat"><b>3</b><span>Platforms: Android, iPhone, web</span></div>
+    </div>
+  </div>
+
+  <section class="section" id="features">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="kicker">What is inside</span>
+        <h2>Everything a cloud drive should do</h2>
+        <p>Back up what you cannot afford to lose, find it fast later, and keep the private things locked well away from the rest.</p>
+      </div>
+      <div class="feat-grid">
+        <div class="feat-card">
+          <div class="feat-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z"/></svg></div>
+          <h3>Photo and video backup</h3>
+          <p>Your camera roll backs up on its own, so a lost or wiped phone never means lost memories.</p>
+        </div>
+        <div class="feat-card">
+          <div class="feat-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 1 0 9-9M3 12l3-3M3 12l3 3"/></svg></div>
+          <h3>One tap restore</h3>
+          <p>Switching phones? Bring your files, contacts and app data back to any Android device in one tap.</p>
+        </div>
+        <div class="feat-card">
+          <div class="feat-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg></div>
+          <h3>Vault lock</h3>
+          <p>Keep sensitive files behind a passcode protected vault, kept separate from the rest of your storage.</p>
+        </div>
+        <div class="feat-card">
+          <div class="feat-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h4l2 3h10v11a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2z"/></svg></div>
+          <h3>Document scanning</h3>
+          <p>Scan receipts, IDs and paperwork straight into your storage, with no separate scanner app needed.</p>
+        </div>
+        <div class="feat-card">
+          <div class="feat-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20M2 12h20M4.9 4.9l14.2 14.2M19.1 4.9L4.9 19.1"/></svg></div>
+          <h3>Sync across devices</h3>
+          <p>Add a file on your phone, open it on the web. Your storage stays the same everywhere you sign in.</p>
+        </div>
+        <div class="feat-card">
+          <div class="feat-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><path d="M8.6 10.6l6.8-3.2M8.6 13.4l6.8 3.2"/></svg></div>
+          <h3>Share files and folders</h3>
+          <p>Send a whole folder to family or friends instead of emailing a dozen attachments back and forth.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section tint">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="kicker">A closer look</span>
+        <h2>Built around the things people actually store</h2>
+        <p>Three parts of CloudGate worth knowing well before you sign up.</p>
+      </div>
+
+      <div class="spotlight-row">
+        <div class="spotlight-copy">
+          <span class="spotlight-tag">Automatic backup</span>
+          <h3>Your camera roll, protected without a second thought</h3>
+          <p>Turn on automatic backup once and CloudGate quietly keeps a copy of every new photo and video, so a cracked screen or a factory reset never costs you a single memory.</p>
+          <ul class="spotlight-list">
+            <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Runs quietly in the background, on Wi-Fi or mobile data, your choice</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Covers photos, videos, documents, contacts and app data</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Switch between automatic or manual backup at any point</li>
+          </ul>
+        </div>
+        <div class="spotlight-visual">
+          <div class="mock-window">
+            <div class="mock-bar"><span></span><span></span><span></span></div>
+            <div class="mock-row"><div class="ic"></div><div class="bars"><i></i><i></i></div></div>
+            <div class="mock-row"><div class="ic"></div><div class="bars"><i></i><i></i></div></div>
+            <div class="mock-row"><div class="ic"></div><div class="bars"><i></i><i></i></div></div>
+            <div class="mock-progress">
+              <div class="track"><div class="fill"></div></div>
+              <span>Backing up: 64GB of 100GB used</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="spotlight-row reverse">
+        <div class="spotlight-copy">
+          <span class="spotlight-tag">Privacy inside the app</span>
+          <h3>A locked room for the files that need one</h3>
+          <p>Not everything belongs in your main storage. The vault sits behind its own passcode, so IDs, financial paperwork and anything else private stay a step removed from the rest of your account.</p>
+          <ul class="spotlight-list">
+            <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Passcode protected, separate from your main login</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Data is encrypted while it travels to your storage</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>You can request your data be deleted at any time</li>
+          </ul>
+        </div>
+        <div class="spotlight-visual">
+          <div class="mock-window">
+            <div class="lock-badge"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg>Vault locked</div>
+            <div class="mock-bar"><span></span><span></span><span></span></div>
+            <div class="mock-row"><div class="ic"></div><div class="bars"><i></i><i></i></div></div>
+            <div class="mock-row"><div class="ic"></div><div class="bars"><i></i><i></i></div></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="spotlight-row">
+        <div class="spotlight-copy">
+          <span class="spotlight-tag">Cross platform</span>
+          <h3>The same storage on every screen you own</h3>
+          <p>Start a backup on your Android phone, check a file from your iPhone at lunch, then open the same folder from a laptop browser that evening. One account, one gate, no matter which device you reach for.</p>
+          <ul class="spotlight-list">
+            <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Native apps for Android and iPhone</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Full access from any web browser, nothing to install</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Sign in once, your files are already there</li>
+          </ul>
+        </div>
+        <div class="spotlight-visual">
+          <div class="mock-window">
+            <div class="mock-bar"><span></span><span></span><span></span></div>
+            <div class="mock-row"><div class="ic"></div><div class="bars"><i></i><i></i></div></div>
+            <div class="device-strip">
+              <div class="device-pill">ANDROID</div>
+              <div class="device-pill">IPHONE</div>
+              <div class="device-pill">WEB</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="kicker">Getting started</span>
+        <h2>Set up in under a minute</h2>
+      </div>
+      <div class="steps">
+        <div class="step"><div class="step-num">1</div><h3>Sign in</h3><p>Create your CloudGate account and your 100GB is ready right away.</p></div>
+        <div class="step"><div class="step-num">2</div><h3>Choose what to back up</h3><p>Pick photos, videos, apps or files, automatic or manual, entirely your call.</p></div>
+        <div class="step"><div class="step-num">3</div><h3>Access anywhere</h3><p>Open the same files from Android, iPhone or your browser, any time you need them.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section tint" id="platforms">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="kicker">Available everywhere</span>
+        <h2>Built for Android, iPhone and the web</h2>
+        <p>Your storage is not locked to a single device. Sign in from wherever you happen to be.</p>
+      </div>
+      <div class="plat-grid">
+        <div class="plat-card">
+          <svg class="plat-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M3.6 2.6c-.3.3-.5.8-.5 1.4v16c0 .6.2 1.1.5 1.4l.1.1L13 12.6v-.2L3.7 2.5l-.1.1z"/><path d="M16.3 15.9l-3.3-3.3v-.2l3.3-3.3 3.8 2.2c1.1.6 1.1 1.6 0 2.2l-3.8 2.4z" opacity=".7"/><path d="M16.3 15.9L13 12.5 3.7 21.9c.4.4 1 .4 1.7.1l10.9-6.1z"/><path d="M16.3 9.1L5.4 3c-.7-.4-1.3-.3-1.7.1L13 12.5l3.3-3.4z" opacity=".85"/></svg>
+          <h3>Android</h3>
+          <p>The full CloudGate app for your phone or tablet, rated 4.4 stars from more than one thousand reviews.</p>
+          <a href="https://play.google.com/store/apps/details?id=com.cloudgate.cloudstorage&hl=en_AU">Get it on Google Play</a>
+        </div>
+        <div class="plat-card">
+          <svg class="plat-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M17.05 12.5c0-2.9 2.37-4.3 2.48-4.37-1.35-1.98-3.46-2.25-4.2-2.28-1.79-.18-3.5 1.05-4.41 1.05-.91 0-2.31-1.03-3.8-1-1.95.03-3.75 1.13-4.75 2.87-2.03 3.51-.52 8.72 1.46 11.58.97 1.4 2.12 2.98 3.63 2.92 1.46-.06 2.01-.94 3.78-.94 1.76 0 2.26.94 3.8.91 1.57-.03 2.56-1.42 3.52-2.83 1.11-1.63 1.57-3.2 1.6-3.28-.03-.02-3.07-1.18-3.11-4.63z"/></svg>
+          <h3>iPhone and iPad</h3>
+          <p>CloudGate for iOS fifteen and newer, with the same 100GB free plan and vault lock built in.</p>
+          <a href="https://apps.apple.com/us/app/cloudgate-cloud-storage-app/id6504859413">Download on the App Store</a>
+        </div>
+        <div class="plat-card">
+          <svg class="plat-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18"/></svg>
+          <h3>Web</h3>
+          <p>Nothing to install. Upload, browse and share your files straight from a browser tab.</p>
+          <a href="https://my.cloudgate-app.com">Open the web app</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="kicker">Why people switch</span>
+        <h2>How the free plan stacks up</h2>
+        <p>A plain look at what 100GB free actually gets you, side by side with a typical free tier elsewhere.</p>
+      </div>
+      <div class="compare-table">
+        <div class="compare-row head">
+          <span class="label">Feature</span>
+          <span class="center">CloudGate free</span>
+          <span class="center">Typical free tier</span>
+        </div>
+        <div class="compare-row">
+          <span class="label">Free storage</span>
+          <span class="center" style="font-weight:700;color:var(--deep);">100GB</span>
+          <span class="center dash-cell">5 to 15GB</span>
+        </div>
+        <div class="compare-row">
+          <span class="label">Automatic photo and video backup</span>
+          <span class="center"><svg class="check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
+          <span class="center dash-cell">Varies</span>
+        </div>
+        <div class="compare-row">
+          <span class="label">Passcode protected vault</span>
+          <span class="center"><svg class="check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
+          <span class="center dash-cell">Rare</span>
+        </div>
+        <div class="compare-row">
+          <span class="label">One tap restore to a new device</span>
+          <span class="center"><svg class="check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
+          <span class="center dash-cell">Varies</span>
+        </div>
+        <div class="compare-row">
+          <span class="label">Available on Android, iPhone and web</span>
+          <span class="center"><svg class="check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
+          <span class="center"><svg class="check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section tint" id="cloud-tips">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="kicker">From Cloud Tips</span>
+        <h2>Guides on storage, backup and getting space back</h2>
+        <p>Short, practical reading on getting the most out of your storage, on and off CloudGate.</p>
+      </div>
+      <div class="tips-grid">
+        <a class="tip-card" href="blog.html">
+          <div class="tip-thumb"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.5"><path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z"/></svg></div>
+          <div class="tip-body">
+            <span class="tip-cat">Phone storage</span>
+            <h3>What to do the moment your phone says storage full</h3>
+            <p>A calm, step by step order of operations before you start deleting things you might regret.</p>
+            <div class="tip-meta"><span>6 min read</span><span class="tip-read">Read guide</span></div>
+          </div>
+        </a>
+        <a class="tip-card" href="blog.html">
+          <div class="tip-thumb"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.5"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="9" cy="11" r="2"/><path d="M21 16l-4.5-4.5L9 19"/></svg></div>
+          <div class="tip-body">
+            <span class="tip-cat">Photos</span>
+            <h3>How to back up years of phone photos without starting over</h3>
+            <p>A practical route for moving a full camera roll into the cloud without losing folders or dates.</p>
+            <div class="tip-meta"><span>8 min read</span><span class="tip-read">Read guide</span></div>
+          </div>
+        </a>
+        <a class="tip-card" href="blog.html">
+          <div class="tip-thumb"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.5"><path d="M3 12a9 9 0 1 0 9-9M3 12l3-3M3 12l3 3"/></svg></div>
+          <div class="tip-body">
+            <span class="tip-cat">Switching phones</span>
+            <h3>Moving to a new Android phone without losing a single file</h3>
+            <p>What to check before you switch, and how a one tap restore actually works in practice.</p>
+            <div class="tip-meta"><span>5 min read</span><span class="tip-read">Read guide</span></div>
+          </div>
+        </a>
+      </div>
+      <div class="tips-footer">
+        <a class="outline-btn" href="blog.html">Visit Cloud Tips</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="kicker">From the community</span>
+        <h2>What CloudGate users say</h2>
+      </div>
+      <div class="rev-grid">
+        <div class="rev-card">
+          <div class="rev-stars">★★★★★</div>
+          <p>Praised the generous free tier and the straightforward setup, calling it a solid pick for everyday backups.</p>
+          <div class="rev-name">Lucas</div>
+          <div class="rev-source">Google Play review</div>
+        </div>
+        <div class="rev-card">
+          <div class="rev-stars">★★★★★</div>
+          <p>Highlighted how smoothly uploads and sharing work day to day, describing the app as simple and reliable.</p>
+          <div class="rev-name">Naz</div>
+          <div class="rev-source">Google Play review</div>
+        </div>
+        <div class="rev-card">
+          <div class="rev-stars">★★★★★</div>
+          <p>Noted the app feels quick and keeps media in good quality, calling it a dependable place to store files.</p>
+          <div class="rev-name">William J.</div>
+          <div class="rev-source">Google Play review</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section tint">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="kicker">Questions</span>
+        <h2>Frequently asked questions</h2>
+      </div>
+      <div class="faq-list">
+        <div class="faq-item">
+          <button class="faq-q">Is CloudGate really free<span class="plus"></span></button>
+          <div class="faq-a"><p>Yes. Every account starts with 100GB of free cloud storage and no credit card is required to get it. You can upgrade later if you ever need more room.</p></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q">Which devices does CloudGate work on<span class="plus"></span></button>
+          <div class="faq-a"><p>CloudGate is available on Android, iPhone and iPad, and through a web browser, so your storage follows you between devices instead of staying tied to one phone.</p></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q">Is my data private inside CloudGate<span class="plus"></span></button>
+          <div class="faq-a"><p>Your data is encrypted while it travels to your storage, and anything especially sensitive can be locked behind a separate passcode protected vault inside the app.</p></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q">What happens if I switch phones<span class="plus"></span></button>
+          <div class="faq-a"><p>Sign in on the new device and restore your files, contacts and app data in one tap, no manual transfer cable or copy and paste required.</p></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q">Do I need to install anything to use the web app<span class="plus"></span></button>
+          <div class="faq-a"><p>No. Open the web app in any browser and sign in. Your storage is already there, the same account you use on Android or iPhone.</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" style="padding-top:0;">
+    <div class="final-cta">
+      <h2>Start with 100GB, free.</h2>
+      <p>No credit card, no trial clock. Just storage, ready the moment you sign up.</p>
+      <div class="store-row">
+        <a class="store-btn" href="https://play.google.com/store/apps/details?id=com.cloudgate.cloudstorage&hl=en_AU">Google Play</a>
+        <a class="store-btn" href="https://apps.apple.com/us/app/cloudgate-cloud-storage-app/id6504859413">App Store</a>
+        <a class="store-btn web" href="https://my.cloudgate-app.com">Open Web App</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <a href="#top" class="brand"><img src="assets/logo-source.png" alt="CloudGate logo"> CloudGate</a>
+        <p>A product of CloudGate Technologies. Secure cloud storage for your photos, videos and files, on Android, iPhone and the web.</p>
+      </div>
+      <div class="foot-col">
+        <h4>Site</h4>
+        <a href="features.html">Features</a>
+        <a href="blog.html">Cloud Tips</a>
+        <a href="https://my.cloudgate-app.com">Web App</a>
+      </div>
+      <div class="foot-col">
+        <h4>Get the app</h4>
+        <a href="https://play.google.com/store/apps/details?id=com.cloudgate.cloudstorage&hl=en_AU">Google Play</a>
+        <a href="https://apps.apple.com/us/app/cloudgate-cloud-storage-app/id6504859413">App Store</a>
+      </div>
+      <div class="foot-col">
+        <h4>Company</h4>
+        <a href="mailto:support@cloudgate-app.com">Support</a>
+        <a href="https://sites.google.com/view/cloudgatecloudstorage/privacypolicy">Privacy policy</a>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>2026 CloudGate Technologies Pty Limited. All rights reserved.</span>
+      <span>Canning Vale, Western Australia</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const header = document.getElementById('header');
+  window.addEventListener('scroll', () => {
+    header.classList.toggle('scrolled', window.scrollY > 20);
+  });
+
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('in'); });
+  }, { threshold: 0.15 });
+
+  document.querySelectorAll('.feat-card, .step, .plat-card, .rev-card, .tip-card, .spotlight-visual').forEach(el => io.observe(el));
+
+  document.querySelectorAll('.faq-item').forEach(item => {
+    const q = item.querySelector('.faq-q');
+    const a = item.querySelector('.faq-a');
+    q.addEventListener('click', () => {
+      const isOpen = item.classList.contains('open');
+      document.querySelectorAll('.faq-item.open').forEach(o => {
+        o.classList.remove('open');
+        o.querySelector('.faq-a').style.maxHeight = null;
+      });
+      if (!isOpen) {
+        item.classList.add('open');
+        a.style.maxHeight = a.scrollHeight + 'px';
+      }
+    });
+  });
+</script>
+
+</body>
+</html>
