@@ -4,13 +4,14 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Cleaning Services Perth | House, Bond, Office & Carpet Cleaning, Lustre Cleaning Co.</title>
-<meta name="description" content="Lustre Cleaning Co. offers house cleaning, bond and end of lease cleaning, office cleaning, carpet, window and oven cleaning across Perth WA. Fixed upfront prices from $45 per hour, fully insured local cleaners. Get a free quote today.">
+<meta name="description" content="Lustre Cleaning Co. offers house cleaning, bond and end of lease cleaning, office cleaning, carpet, window and oven cleaning across Perth WA. Fixed upfront prices, fully insured local cleaners. Get a free quote today.">
 <meta name="keywords" content="cleaning services Perth, house cleaning Perth, bond cleaning Perth, end of lease cleaning Perth, office cleaning Perth, carpet cleaning Perth, window cleaning Perth, oven cleaning Perth, Perth cleaning company">
 <link rel="canonical" href="https://www.lustrecleaning.com.au/">
 <meta name="robots" content="index, follow">
 <meta name="geo.region" content="AU-WA">
 <meta name="geo.placename" content="Perth">
 <link rel="icon" type="image/png" href="lustre-favicon.png">
+<link rel="apple-touch-icon" href="lustre-favicon.png">
 
 <!-- Open Graph -->
 <meta property="og:type" content="website">
@@ -34,7 +35,7 @@
   "@type": "HomeAndConstructionBusiness",
   "@id": "https://www.lustrecleaning.com.au/#business",
   "name": "Lustre Cleaning Co.",
-  "image": "https://www.lustrecleaning.com.au/logo.png",
+  "image": "https://www.lustrecleaning.com.au/lustre-favicon.png",
   "description": "Residential and commercial cleaning services across Perth, Western Australia, including house cleaning, bond and end of lease cleaning, office cleaning, carpet, window and oven cleaning.",
   "url": "https://www.lustrecleaning.com.au/",
   "telephone": "+61400000000",
@@ -91,20 +92,18 @@
   - Phone number 0400 000 000 / WhatsApp link (wa.me/61400000000)
   - Email lustrecleaningandco@gmail.com
   - ABN 00 000 000 000
-  - Logo file: add an actual lustre.png in the same folder as this file, it is
-    referenced in the header and footer but not included here
-  - Pricing figures in the Pricing section (marked "From $XX, placeholder")
+  - Logo file: lustre-favicon.png used as the single brand mark site-wide
+    (header, footer, touch icon). Add the real file to the same folder as
+    this page and pricing.html.
   - Testimonial names/quotes in the Testimonials section
   - Before and after photos in the Real Results section (see the comment just
     above that section for the expected file names)
   - Social links in the footer (currently "#")
   - Privacy policy link in the footer (currently "#", page not built yet)
-  - NOTE: nav currently links to sections on this one page (#services etc). When you add
-    separate pages later (services.html, pricing.html...), just swap those hrefs over.
+  - NOTE: nav links Pricing to a dedicated pricing.html page. Services,
+    Process, Areas and FAQ still link to sections on this one page (#services etc).
   ══════════════════════════════════════════════════════════════════
 -->
-<!-- favicon and logo files (lustre-favicon.png, lustre.png) are referenced but not included, add them to the same folder as this file -->
-
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -136,7 +135,7 @@
     overflow-x:hidden;
   }
   img,svg{ display:block; max-width:100%; }
-  a{ color:inherit; text-decoration:none; } /* fix: links had no underline reset, so the browser default underline was showing through on every nav link */
+  a{ color:inherit; text-decoration:none; }
   ul{ list-style:none; }
   button{ font:inherit; cursor:pointer; }
   .wrap{ max-width:1180px; margin:0 auto; padding:0 2rem; }
@@ -167,6 +166,7 @@
   .btn-ghost:hover{ border-color:var(--ink); }
   .btn-light{ background:var(--paper); color:var(--ink); }
   .btn-light:hover{ transform:translateY(-2px); box-shadow:0 10px 24px rgba(0,0,0,0.25); }
+  .btn:disabled{ opacity:0.6; cursor:not-allowed; transform:none !important; box-shadow:none !important; }
 
   /* ───────── NAV ───────── */
   header{
@@ -193,9 +193,11 @@
   }
   .nav-links a:hover{ color:var(--ink); }
   .nav-links a:hover::after{ width:100%; }
+  .nav-links a.active{ color:var(--ink); }
+  .nav-links a.active::after{ width:100%; }
   .nav-cta{ display:flex; align-items:center; gap:0.9rem; }
   .mob-toggle{ display:none; }
-  .mob-menu{ display:none; } /* fix: this was only set to none inside the 720px media query, so on tablet widths (721 to 980px) the div had no display rule and fell back to the browser default of block, permanently visible under the header */
+  .mob-menu{ display:none; }
 
   /* ───────── HERO ───────── */
   .hero{ padding:calc(76px + 4.5rem) 0 4rem; position:relative; }
@@ -301,7 +303,7 @@
   .ba-card h3{ font-size:1rem; margin-bottom:0.3rem; }
   .ba-note{ font-family:var(--mono); font-size:11.5px; color:var(--ink-soft); }
 
-  /* ───────── PRICING ───────── */
+  /* ───────── PRICING TEASER (on-page summary) ───────── */
   .price-grid{ display:grid; grid-template-columns:repeat(3, 1fr); gap:1.3rem; align-items:stretch; }
   .price-card{
     background:#fff; border:1.5px solid var(--line); border-radius:20px; padding:2.1rem 1.9rem;
@@ -313,56 +315,12 @@
     font-family:var(--mono); font-size:10.5px; letter-spacing:0.05em; text-transform:uppercase;
     padding:5px 12px; border-radius:100px; font-weight:600;
   }
-  .price-name{ font-family:var(--display); font-size:1.3rem; font-weight:600; margin-bottom:0.4rem; }
-  .price-amount{ font-family:var(--mono); font-size:2.1rem; color:var(--sea); margin-bottom:0.3rem; }
-  .price-amount sup{ font-size:0.9rem; top:-0.9em; }
-  .price-note{ font-size:12.5px; color:var(--ink-soft); margin-bottom:1.4rem; }
+  .price-name{ font-family:var(--display); font-size:1.3rem; font-weight:600; margin-bottom:0.6rem; }
+  .price-note{ font-size:13px; color:var(--sage-dk); font-family:var(--mono); margin-bottom:1.4rem; }
   .price-list{ margin-bottom:1.8rem; flex-grow:1; }
   .price-list li{ display:flex; gap:10px; font-size:13.8px; color:var(--ink-soft); padding:7px 0; border-top:1px dashed var(--line); }
   .price-list li:first-child{ border-top:none; }
   .price-list svg{ width:15px; height:15px; color:var(--sage-dk); flex-shrink:0; margin-top:2px; }
-  .price-fine{ text-align:center; font-size:12.5px; color:var(--ink-soft); margin-top:1rem; }
-
-  /* ───────── PRICE TABLE (detailed) ───────── */
-  .price-table-wrap{ margin-top:3.2rem; }
-  .price-cat-tabs{ display:flex; gap:0.6rem; margin-bottom:1.3rem; flex-wrap:wrap; }
-  .price-cat-tabs button{
-    font-family:var(--mono); font-size:12px; letter-spacing:0.04em; text-transform:uppercase;
-    background:#fff; border:1.5px solid var(--line-dk); color:var(--ink-soft);
-    padding:9px 18px; border-radius:100px; transition:all .18s ease;
-  }
-  .price-cat-tabs button.active{ background:var(--sea); border-color:var(--sea); color:#fff; }
-  .price-table-scroll{ overflow-x:auto; -webkit-overflow-scrolling:touch; border-radius:14px; }
-  .price-table{ width:100%; min-width:420px; border-collapse:collapse; background:#fff; border:1.5px solid var(--line); border-radius:14px; overflow:hidden; }
-  .price-table thead th{
-    text-align:left; font-family:var(--mono); font-size:11px; letter-spacing:0.05em; text-transform:uppercase;
-    color:#fff; background:var(--sea); padding:12px 16px; font-weight:500;
-  }
-  .price-table thead th.col-price{ background:var(--sage-dk); }
-  .price-table tbody td{ padding:12px 16px; font-size:14px; border-top:1px solid var(--line); color:var(--ink-soft); }
-  .price-table tbody tr:nth-child(even) td{ background:var(--paper-2); }
-  .price-table td.col-price{ font-weight:700; color:var(--sage-dk); font-family:var(--mono); white-space:nowrap; }
-  .price-panel{ display:none; }
-  .price-panel.active{ display:block; }
-
-  .addon-wrap{ margin-top:3rem; }
-  .addon-grid{ display:grid; grid-template-columns:repeat(2, 1fr); gap:0.7rem; }
-  .addon-item{
-    display:flex; justify-content:space-between; gap:1rem; background:#fff;
-    border:1px solid var(--line); border-radius:10px; padding:11px 15px; font-size:13.5px;
-  }
-  .addon-item span:first-child{ color:var(--ink); }
-  .addon-item span:last-child{ font-family:var(--mono); color:var(--sage-dk); font-weight:600; white-space:nowrap; }
-
-  .price-highlight{
-    display:flex; gap:12px; align-items:flex-start;
-    background:var(--paper-2); border:1.5px solid var(--sand);
-    border-left:4px solid var(--citrus);
-    border-radius:12px; padding:1.1rem 1.3rem; margin-top:2rem;
-  }
-  .price-highlight svg{ width:20px; height:20px; color:var(--sage-dk); flex-shrink:0; margin-top:2px; }
-  .price-highlight p{ font-size:13.8px; color:var(--ink-soft); line-height:1.7; }
-  .price-highlight strong{ color:var(--ink); }
 
   /* ───────── AREAS ───────── */
   .areas{ background:var(--paper-2); }
@@ -426,10 +384,12 @@
   .form-row input, .form-row select, .form-row textarea{
     width:100%; background:rgba(255,255,255,0.06); border:1.5px solid rgba(255,255,255,0.16);
     border-radius:9px; padding:11px 13px; color:#fff; font-family:var(--body);
-    font-size:16px; /* fix: was 14px, which makes iOS Safari auto zoom in when a field is tapped */
+    font-size:16px;
   }
   .form-row input::placeholder, .form-row textarea::placeholder{ color:rgba(255,255,255,0.35); }
   .form-row select option{ color:#000; }
+  .form-row input:invalid:not(:placeholder-shown){ border-color:#FF9B85; }
+  .form-hint{ font-size:11.5px; color:rgba(255,255,255,0.4); margin-top:5px; }
   .form-two{ display:grid; grid-template-columns:1fr 1fr; gap:1rem; }
   .form-row textarea{ resize:vertical; min-height:88px; }
 
@@ -479,7 +439,7 @@
     .contact-grid{ grid-template-columns:1fr; }
     .process, .contact{ margin:0 1.25rem; border-radius:20px; }
   }
-  @media (max-width: 900px){ /* widened from 720px: six nav links plus two buttons didn't actually fit until closer to 900px, so tablet widths were showing a cramped, overflowing nav */
+  @media (max-width: 900px){
     .nav-links{ display:none; }
     .mob-toggle{
       display:flex; flex-direction:column; justify-content:center; align-items:center; gap:5px;
@@ -506,7 +466,6 @@
     section{ padding:4rem 0; }
     .wrap{ padding:0 1.25rem; }
 
-    /* services: swipeable, 2 cards stacked per page, so less vertical space is used */
     .svc-grid{
       display:grid; grid-template-columns:none; grid-auto-flow:column; grid-template-rows:repeat(2, minmax(0,1fr));
       grid-auto-columns:calc(100vw - 2.5rem); gap:1rem;
@@ -516,7 +475,6 @@
     .svc-grid::-webkit-scrollbar{ display:none; }
     .svc-grid .svc-card{ scroll-snap-align:start; min-width:0; }
 
-    /* before and after: swipeable, one card per page */
     .ba-grid{
       display:grid; grid-template-columns:none; grid-auto-flow:column; grid-auto-columns:calc(100vw - 2.5rem); gap:1rem;
       overflow-x:auto; scroll-snap-type:x mandatory; -webkit-overflow-scrolling:touch;
@@ -525,17 +483,12 @@
     .ba-grid::-webkit-scrollbar{ display:none; }
     .ba-grid .ba-card{ scroll-snap-align:start; min-width:0; }
 
-    /* suburb chips: drag sideways instead of wrapping onto more lines when they overflow */
     .chip-row{ flex-wrap:nowrap; overflow-x:auto; -webkit-overflow-scrolling:touch; padding-bottom:4px; scrollbar-width:none; }
     .chip-row::-webkit-scrollbar{ display:none; }
     .chip{ flex-shrink:0; }
 
     .proc-grid{ grid-template-columns:1fr; gap:1.8rem; }
     .form-two{ grid-template-columns:1fr; }
-    .addon-grid{ grid-template-columns:1fr; }
-    .price-table thead th, .price-table tbody td{ padding:10px 12px; font-size:13px; }
-    .price-cat-tabs{ gap:0.4rem; }
-    .price-cat-tabs button{ padding:8px 14px; font-size:11px; }
     .foot-top{ flex-direction:column; gap:2rem; }
     .foot-cols{ gap:2rem; }
     .process, .contact{ margin:0 0.75rem; padding:3.2rem 0; }
@@ -561,19 +514,19 @@
 
 <header>
   <nav class="wrap nav">
-    <a href="#home" class="brand">
+    <a href="index.html#home" class="brand">
       <img src="lustre-favicon.png" alt="Lustre Cleaning Co. logo" class="brand-mark">
       <span class="brand-name">Lustre <em>Cleaning Co.</em></span>
     </a>
     <div class="nav-links">
-      <a href="#services">Services</a>
-      <a href="#process">Process</a>
-      <a href="#pricing">Pricing</a>
-      <a href="#areas">Areas</a>
-      <a href="#faq">FAQ</a>
+      <a href="index.html#services">Services</a>
+      <a href="index.html#process">Process</a>
+      <a href="pricing.html">Pricing</a>
+      <a href="index.html#areas">Areas</a>
+      <a href="index.html#faq">FAQ</a>
     </div>
     <div class="nav-cta">
-      <a href="#contact" class="btn btn-ghost">Contact</a>
+      <a href="index.html#contact" class="btn btn-ghost">Contact</a>
       <a href="https://wa.me/61400000000?text=Hi%2C%20I%27d%20like%20a%20quote%20for%20cleaning." target="_blank" rel="noopener" class="btn btn-primary">Get a quote</a>
     </div>
     <button class="mob-toggle" id="mobToggle" aria-label="Open menu" aria-expanded="false" aria-controls="mobMenu">
@@ -581,12 +534,12 @@
     </button>
   </nav>
   <div class="mob-menu" id="mobMenu">
-    <a href="#services">Services</a>
-    <a href="#process">Process</a>
-    <a href="#pricing">Pricing</a>
-    <a href="#areas">Areas</a>
-    <a href="#faq">FAQ</a>
-    <a href="#contact">Contact</a>
+    <a href="index.html#services">Services</a>
+    <a href="index.html#process">Process</a>
+    <a href="pricing.html">Pricing</a>
+    <a href="index.html#areas">Areas</a>
+    <a href="index.html#faq">FAQ</a>
+    <a href="index.html#contact">Contact</a>
   </div>
 </header>
 
@@ -602,7 +555,7 @@
           <svg viewBox="0 0 24 24" fill="currentColor" width="16" height="16"><path d="M17.47 14.38c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.16-.17.2-.35.22-.64.08-.3-.15-1.26-.46-2.39-1.48-.88-.79-1.48-1.76-1.65-2.06-.17-.3-.02-.46.13-.6.13-.14.3-.35.44-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.08-.15-.67-1.61-.92-2.21-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.79.37-.27.3-1.04 1.02-1.04 2.48s1.07 2.87 1.21 3.07c.15.2 2.1 3.2 5.08 4.49.71.3 1.26.49 1.69.62.71.23 1.36.2 1.87.12.57-.08 1.76-.72 2-1.41.25-.7.25-1.29.17-1.42-.07-.12-.27-.2-.57-.35z"/><path d="M12 0C5.37 0 0 5.37 0 12c0 2.12.55 4.1 1.52 5.82L0 24l6.34-1.5A11.93 11.93 0 0012 24c6.63 0 12-5.37 12-12S18.63 0 12 0zm0 21.82a9.82 9.82 0 01-5-1.37l-.36-.21-3.73.88.92-3.62-.24-.37A9.82 9.82 0 012.18 12C2.18 6.58 6.58 2.18 12 2.18S21.82 6.58 21.82 12 17.42 21.82 12 21.82z"/></svg>
           Get a free quote
         </a>
-        <a href="#services" class="btn btn-ghost">See all services</a>
+        <a href="index.html#services" class="btn btn-ghost">See all services</a>
       </div>
       <div class="hero-trust">
         <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg> Fully insured teams</span>
@@ -640,13 +593,13 @@
   </div>
 </div>
 
-<!-- ═══════════ SERVICES ═══════════ -->
+<!-- ═══════════ SERVICES (no pricing mentions, full descriptions live on pricing.html) ═══════════ -->
 <section class="services" id="services">
   <div class="wrap">
     <div class="section-head">
       <span class="eyebrow">What we do</span>
       <h2>One team for every kind of clean.</h2>
-      <p>Residential, commercial and specialist services, book them separately or bundle them into one visit.</p>
+      <p>Residential, commercial and specialist services, book them separately or bundle them into one visit. Full pricing for each is on our <a href="pricing.html" style="color:var(--sage-dk); font-weight:600; text-decoration:underline;">pricing page</a>.</p>
     </div>
 
     <div class="svc-grid">
@@ -654,61 +607,61 @@
         <div class="svc-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 12l9-9 9 9M5 10v10h14V10"/></svg></div>
         <span class="svc-tag">Residential</span>
         <h3>Regular house cleaning</h3>
-        <p>Weekly, fortnightly or monthly visits that keep your home consistently clean, same checklist, every time.</p>
+        <p>Weekly, fortnightly or monthly visits from the same team working to the same checklist, covering kitchens, bathrooms, living areas, dusting, vacuuming and mopping.</p>
       </div>
       <div class="svc-card">
         <div class="svc-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M9 11l3 3L22 4M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg></div>
         <span class="svc-tag">Residential</span>
         <h3>End of lease and bond cleaning</h3>
-        <p>A full top to bottom clean against your agent's checklist, backed by our bond back guarantee.</p>
+        <p>A full clean run against your property manager's own checklist, with carpet steam cleaning included and a bond back guarantee behind it.</p>
       </div>
       <div class="svc-card">
         <div class="svc-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 2l2.4 6.6L21 11l-6.6 2.4L12 20l-2.4-6.6L3 11l6.6-2.4L12 2z"/></svg></div>
         <span class="svc-tag">Residential</span>
         <h3>Deep and spring cleaning</h3>
-        <p>Skirting boards, inside appliances, behind furniture, the once or twice a year reset your home needs.</p>
+        <p>A one off reset that goes further than a regular visit: inside the oven and fridge, cupboard interiors, skirting boards, window sills, and behind or under furniture.</p>
       </div>
       <div class="svc-card">
         <div class="svc-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2V9z"/></svg></div>
         <span class="svc-tag">Residential</span>
         <h3>Airbnb and short stay turnovers</h3>
-        <p>Fast, reliable turnaround cleans between guests, with linen reset and a photo ready finish.</p>
+        <p>Fast turnaround between guests with a consistent finish, including a linen change and bed remake, kitchen and bathroom reset, and rubbish out.</p>
       </div>
       <div class="svc-card">
         <div class="svc-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 21h18M6 21V8l6-4 6 4v13M9 21v-6h6v6"/></svg></div>
         <span class="svc-tag">Commercial</span>
         <h3>Office and commercial cleaning</h3>
-        <p>Scheduled after hours or early morning cleans for offices, clinics, retail and hospitality spaces.</p>
+        <p>Scheduled cleans for offices, clinics, retail and hospitality venues, run after hours or before opening so the business day is never interrupted.</p>
       </div>
       <div class="svc-card">
         <div class="svc-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="4" y="4" width="16" height="16" rx="2"/><path d="M4 10h16M10 4v16"/></svg></div>
         <span class="svc-tag">Commercial</span>
         <h3>Strata and common area cleaning</h3>
-        <p>Lobbies, stairwells, car parks and shared facilities kept presentable on a recurring schedule.</p>
+        <p>Recurring care for lobbies, stairwells, lift areas, car parks and shared facilities, worked to a fixed roster agreed with the strata manager.</p>
       </div>
       <div class="svc-card">
         <div class="svc-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 20V10a4 4 0 014-4h8a4 4 0 014 4v10M4 20h16M8 20v-4a4 4 0 118 0v4"/></svg></div>
         <span class="svc-tag">Specialist</span>
         <h3>Carpet and upholstery cleaning</h3>
-        <p>Hot water extraction and stain treatment for carpets, rugs, lounges and dining chairs.</p>
+        <p>Hot water extraction with pre-treatment on stains, safe for most carpet fibres and upholstery fabrics, including rugs, lounges and dining chairs.</p>
       </div>
       <div class="svc-card">
         <div class="svc-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 12h18M12 3v18"/></svg></div>
         <span class="svc-tag">Specialist</span>
         <h3>Window cleaning, in and out</h3>
-        <p>Streak free glass, tracks and sills for houses, apartments and shopfronts.</p>
+        <p>Streak free glass, tracks and sills for homes, apartments and shopfronts, with double storey and hard to reach windows quoted after a look at access.</p>
       </div>
       <div class="svc-card">
         <div class="svc-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 2a10 10 0 100 20 10 10 0 000-20zM8 12h8M12 8v8"/></svg></div>
         <span class="svc-tag">Specialist</span>
         <h3>Oven cleaning</h3>
-        <p>Racks, glass and interior degreased with food safe products, no harsh fumes left behind.</p>
+        <p>Racks, glass and interior degreased using food safe products, no harsh fumes left behind and the oven usable again the same day.</p>
       </div>
       <div class="svc-card">
         <div class="svc-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.4-3.4a4 4 0 01-5.4 5.4L6.7 21.3a2 2 0 01-2.8-2.8L14 8.3a4 4 0 015.4-5.4l-3.4 3.4z"/></svg></div>
         <span class="svc-tag">Specialist</span>
         <h3>Post construction clean</h3>
-        <p>Dust, debris and residue removal so a freshly built or renovated space is ready to move into.</p>
+        <p>Fine dust, debris and residue removal in careful passes, so a freshly built or renovated space is genuinely ready to live in, not just swept.</p>
       </div>
     </div>
   </div>
@@ -797,30 +750,28 @@
   </div>
 </section>
 
-<!-- ═══════════ PRICING ═══════════ -->
+<!-- ═══════════ PRICING TEASER (full detail lives on pricing.html) ═══════════ -->
 <section id="pricing">
   <div class="wrap">
     <div class="section-head">
       <span class="eyebrow">Pricing</span>
       <h2>Simple, upfront pricing.</h2>
-      <p>Every job is confirmed with a fixed price before we book you in.</p>
+      <p>Every job is confirmed with a fixed price before we book you in. See the full breakdown, searchable by service, on our pricing page.</p>
     </div>
     <div class="price-grid">
       <div class="price-card">
         <div class="price-name">Regular House Cleaning</div>
-        <div class="price-amount">$45<sup>/hr</sup></div>
-        <div class="price-note">From $150 per visit for a 2 bed home, weekly or fortnightly</div>
+        <div class="price-note">Weekly, fortnightly or monthly</div>
         <ul class="price-list">
           <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg> Kitchen, bathrooms and living areas</li>
           <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg> Dusting, vacuuming and mopping</li>
           <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg> Bins emptied, beds made</li>
         </ul>
-        <a href="#contact" class="btn btn-ghost">Book regular cleaning</a>
+        <a href="index.html#contact" class="btn btn-ghost">Book regular cleaning</a>
       </div>
       <div class="price-card featured">
         <span class="price-badge">Most booked</span>
         <div class="price-name">Deep Clean</div>
-        <div class="price-amount">$245<sup>/visit</sup></div>
         <div class="price-note">One off, average 2 to 3 bed home</div>
         <ul class="price-list">
           <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg> Everything in a regular clean, plus</li>
@@ -828,98 +779,22 @@
           <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg> Skirting boards and window sills</li>
           <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg> Behind and under furniture</li>
         </ul>
-        <a href="#contact" class="btn btn-primary">Book a deep clean</a>
+        <a href="index.html#contact" class="btn btn-primary">Book a deep clean</a>
       </div>
       <div class="price-card">
         <div class="price-name">Bond Back Guarantee</div>
-        <div class="price-amount">$250<sup>/from</sup></div>
-        <div class="price-note">2 bed from $250, see full pricing by size below</div>
+        <div class="price-note">See full pricing by size below</div>
         <ul class="price-list">
           <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg> Full clean to real estate checklist</li>
           <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg> Carpet steam clean included</li>
           <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg> Free re-clean if the agent flags an issue</li>
         </ul>
-        <a href="#contact" class="btn btn-ghost">Book a bond clean</a>
+        <a href="index.html#contact" class="btn btn-ghost">Book a bond clean</a>
       </div>
     </div>
-
-    <!-- Detailed price list -->
-    <div class="price-table-wrap">
-      <div class="price-cat-tabs" role="tablist" aria-label="Pricing by category">
-        <button class="active" data-panel="panel-residential" type="button">Residential</button>
-        <button data-panel="panel-commercial" type="button">Commercial</button>
-        <button data-panel="panel-specialist" type="button">Specialist</button>
-      </div>
-
-      <div class="price-panel active" id="panel-residential">
-        <div class="price-table-scroll">
-        <table class="price-table">
-          <thead><tr><th>Service</th><th class="col-price">Our price</th></tr></thead>
-          <tbody>
-            <tr><td>Regular house cleaning, hourly rate</td><td class="col-price">$45/hr</td></tr>
-            <tr><td>Regular house cleaning, 2 bed visit</td><td class="col-price">$150/visit</td></tr>
-            <tr><td>Regular house cleaning, 3 bed visit</td><td class="col-price">$215/visit</td></tr>
-            <tr><td>End of lease / bond clean, studio or 1 bed</td><td class="col-price">$200</td></tr>
-            <tr><td>End of lease / bond clean, 2 bed</td><td class="col-price">$250</td></tr>
-            <tr><td>End of lease / bond clean, 3 bed</td><td class="col-price">$380</td></tr>
-            <tr><td>End of lease / bond clean, 4+ bed</td><td class="col-price">$585</td></tr>
-            <tr><td>Deep and spring clean (one off)</td><td class="col-price">$245</td></tr>
-            <tr><td>Airbnb / short stay turnover, 1 bed</td><td class="col-price">$90</td></tr>
-            <tr><td>Airbnb / short stay turnover, 3 bed</td><td class="col-price">$155</td></tr>
-          </tbody>
-        </table>
-        </div>
-      </div>
-
-      <div class="price-panel" id="panel-commercial">
-        <div class="price-table-scroll">
-        <table class="price-table">
-          <thead><tr><th>Service</th><th class="col-price">Our price</th></tr></thead>
-          <tbody>
-            <tr><td>Office and commercial cleaning</td><td class="col-price">$3.60/m²</td></tr>
-            <tr><td>Strata and common area cleaning</td><td class="col-price">$3.60/m²</td></tr>
-          </tbody>
-        </table>
-        </div>
-      </div>
-
-      <div class="price-panel" id="panel-specialist">
-        <div class="price-table-scroll">
-        <table class="price-table">
-          <thead><tr><th>Service</th><th class="col-price">Our price</th></tr></thead>
-          <tbody>
-            <tr><td>Carpet and upholstery, per room</td><td class="col-price">$36/room</td></tr>
-            <tr><td>Carpet and upholstery, whole house</td><td class="col-price">$165</td></tr>
-            <tr><td>Window cleaning, domestic, hourly</td><td class="col-price">$34/hr</td></tr>
-            <tr><td>Window cleaning, commercial, per pane</td><td class="col-price">$7/pane</td></tr>
-            <tr><td>Oven cleaning, standard</td><td class="col-price">$80</td></tr>
-            <tr><td>Oven cleaning, heavily soiled</td><td class="col-price">$135</td></tr>
-            <tr><td>Post construction, single zone (kitchen/bath)</td><td class="col-price">$315</td></tr>
-            <tr><td>Post construction, whole 3 bed home</td><td class="col-price">$540</td></tr>
-          </tbody>
-        </table>
-        </div>
-      </div>
-    </div>
-
-    <!-- Add-ons -->
-    <div class="addon-wrap">
-      <h2 style="font-size:1.3rem; margin-bottom:1rem;">Common add ons</h2>
-      <div class="addon-grid">
-        <div class="addon-item"><span>Inside fridge</span><span>+$40 to $60</span></div>
-        <div class="addon-item"><span>Interior wall wash</span><span>+$50 to $100</span></div>
-        <div class="addon-item"><span>Balcony / patio pressure wash</span><span>+$60 to $120</span></div>
-        <div class="addon-item"><span>Blind cleaning</span><span>+$10 to $15/blind</span></div>
-        <div class="addon-item"><span>Garage clean</span><span>+$40 to $80</span></div>
-        <div class="addon-item"><span>Same day / urgent booking</span><span>+10 to 15%</span></div>
-        <div class="addon-item"><span>Outer suburb travel (Mandurah, Rockingham, Armadale)</span><span>+$15 to $40</span></div>
-      </div>
-    </div>
-
-    <div class="price-highlight">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 9v4M12 17h.01M10.3 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L14.7 3.86a2 2 0 00-3.4 0z"/></svg>
-      <p><strong>Please note:</strong> prices above are starting points based on an average property in good condition. If an on site inspection finds the property dirtier or more work is needed than first described (heavy soiling, pet hair, mould, excess clutter, etc.), the price may be adjusted, but in line with our no surprises policy, we will always explain why and confirm the new price with you before any extra work begins.</p>
-    </div>
+    <p style="text-align:center; margin-top:2.2rem;">
+      <a href="pricing.html" class="btn btn-primary">See full pricing, all services</a>
+    </p>
   </div>
 </section>
 
@@ -992,7 +867,7 @@
           <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6 6.6.9-4.8 4.6 1.1 6.5-5.8-3-5.8 3 1.1-6.5L2.5 8.9l6.6-.9z"/></svg>
           <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6 6.6.9-4.8 4.6 1.1 6.5-5.8-3-5.8 3 1.1-6.5L2.5 8.9l6.6-.9z"/></svg>
         </div>
-        <p class="testi-quote">""Booked a bond clean last month with them, and words are not enough for how thankful I am with what Yousaf and his team provided. They spent 2 hours only and made sure the house was in brand new condition. Highly reccommend to anyone looking to get their bond back!!""</p>
+        <p class="testi-quote">"Booked a bond clean last month with them, and words are not enough for how thankful I am with what Yousaf and his team provided. They spent 2 hours only and made sure the house was in brand new condition. Highly recommend to anyone looking to get their bond back!"</p>
         <div class="testi-who">Ali Raja</div>
       </div>
       <div class="testi-card">
@@ -1103,7 +978,7 @@
       </div>
 
       <div class="form-card">
-        <form id="quoteForm">
+        <form id="quoteForm" novalidate>
           <input type="hidden" name="access_key" value="263a1531-be67-45eb-85ea-fe7e4485769a">
           <input type="hidden" name="subject" value="New cleaning quote request, Lustre Cleaning Co.">
           <input type="checkbox" name="botcheck" style="display:none" tabindex="-1" autocomplete="off">
@@ -1116,6 +991,11 @@
               <label for="fSuburb">Suburb</label>
               <input id="fSuburb" name="suburb" type="text" placeholder="e.g. Fremantle" required>
             </div>
+          </div>
+          <div class="form-row">
+            <label for="fPhone">Phone number</label>
+            <input id="fPhone" name="phone" type="tel" placeholder="04XX XXX XXX" inputmode="tel" autocomplete="tel" required pattern="^(?:\+?61|0)4\d{2}\s?\d{3}\s?\d{3}$|^(?:\+?61|0)[2378]\s?\d{4}\s?\d{4}$">
+            <p class="form-hint">Australian mobile or landline, e.g. 0412 345 678 or (08) 9123 4567</p>
           </div>
           <div class="form-row">
             <label for="fService">Service needed</label>
@@ -1147,7 +1027,7 @@
   <div class="wrap">
     <div class="foot-top">
       <div class="foot-brand">
-        <a href="#home" class="brand">
+        <a href="index.html#home" class="brand">
           <img src="lustre-favicon.png" alt="Lustre Cleaning Co. logo" class="brand-mark">
           <span class="brand-name">Lustre <em>Cleaning Co.</em></span>
         </a>
@@ -1156,17 +1036,17 @@
       <div class="foot-cols">
         <div class="foot-col">
           <h5>Services</h5>
-          <a href="#services">House cleaning</a>
-          <a href="#services">Bond cleaning</a>
-          <a href="#services">Office cleaning</a>
-          <a href="#services">Carpet cleaning</a>
+          <a href="index.html#services">House cleaning</a>
+          <a href="pricing.html">Bond cleaning</a>
+          <a href="index.html#services">Office cleaning</a>
+          <a href="pricing.html">Carpet cleaning</a>
         </div>
         <div class="foot-col">
           <h5>Company</h5>
-          <a href="#process">How it works</a>
-          <a href="#pricing">Pricing</a>
-          <a href="#areas">Service areas</a>
-          <a href="#faq">FAQ</a>
+          <a href="index.html#process">How it works</a>
+          <a href="pricing.html">Pricing</a>
+          <a href="index.html#areas">Service areas</a>
+          <a href="index.html#faq">FAQ</a>
         </div>
         <div class="foot-col">
           <h5>Legal</h5>
@@ -1204,17 +1084,39 @@
     mobToggle.setAttribute('aria-expanded', 'false');
   }));
 
+  // Australian phone number validation (mobiles: 04xx xxx xxx, landlines: 0[2378] xxxx xxxx, with optional +61)
+  const AU_PHONE_RE = /^(?:\+?61|0)4\d{2}\s?\d{3}\s?\d{3}$|^(?:\+?61|0)[2378]\s?\d{4}\s?\d{4}$/;
+
+  function isValidAuPhone(value){
+    return AU_PHONE_RE.test(value.trim());
+  }
+
   // Quote request form, submits to Web3Forms
   const quoteForm = document.getElementById('quoteForm');
   const quoteSubmitBtn = document.getElementById('quoteSubmitBtn');
   const formMsg = document.getElementById('formMsg');
+  const phoneInput = document.getElementById('fPhone');
+
   quoteForm.addEventListener('submit', async (e) => {
     e.preventDefault();
+    formMsg.textContent = '';
+    formMsg.className = 'form-msg';
+
+    if (!quoteForm.checkValidity()){
+      quoteForm.reportValidity();
+      return;
+    }
+    if (!isValidAuPhone(phoneInput.value)){
+      formMsg.textContent = 'Please enter a valid Australian phone number, e.g. 0412 345 678.';
+      formMsg.classList.add('error');
+      phoneInput.focus();
+      return;
+    }
+
     const originalLabel = quoteSubmitBtn.textContent;
     quoteSubmitBtn.disabled = true;
     quoteSubmitBtn.textContent = 'Sending...';
-    formMsg.textContent = '';
-    formMsg.className = 'form-msg';
+
     try {
       const response = await fetch('https://api.web3forms.com/submit', {
         method: 'POST',
@@ -1237,17 +1139,6 @@
       quoteSubmitBtn.disabled = false;
       quoteSubmitBtn.textContent = originalLabel;
     }
-  });
-
-  // Pricing category tabs
-  const priceTabs = document.querySelectorAll('.price-cat-tabs button');
-  priceTabs.forEach(tab => {
-    tab.addEventListener('click', () => {
-      priceTabs.forEach(t => t.classList.remove('active'));
-      document.querySelectorAll('.price-panel').forEach(p => p.classList.remove('active'));
-      tab.classList.add('active');
-      document.getElementById(tab.dataset.panel).classList.add('active');
-    });
   });
 
   // FAQ accordion
